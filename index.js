@@ -22,7 +22,7 @@ const srv = http.createServer(async (req, res) => {
   res.setHeader('Pb-Res-Content-Type', mime.getType(req.url));
 
   try {
-    const childPath = path.join(rootDir, urlParts.pathname.slice(rootChannel.length));
+    const childPath = path.join(rootDir, urlParts.pathname.slice('/req'.length + rootChannel.length));
     const stats = await fs.promises.stat(childPath);
 
     if (stats.isFile()) {
